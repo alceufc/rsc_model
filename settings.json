@@ -1,0 +1,7 @@
+{
+    "reddit_dataset_dir": "../sample_data/reddit/",
+    "user_type" : {
+        "reddit" : "../sample_data/reddit/user_type.csv"
+    },
+    "fig_dir": "../figs/"
+}
