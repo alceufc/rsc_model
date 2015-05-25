@@ -1,3 +1,4 @@
-# Matlab ignore files.
+/figs/
 
+# Matlab ignore files.
 *.m~
