@@ -4,7 +4,7 @@ function [] = plot_iat_hist_fit(Tdata, Tsynth, varargin)
 
 % Parse optional arguments.
 parser = inputParser;
-addOptional(parser, 'dMin', 1, @isnumeric);
+addOptional(parser, 'dMin', 10, @isnumeric);
 addOptional(parser, 'dMax', inf, @isnumeric);
 addOptional(parser, 'nBins', 300, @isnumeric);
 addParamValue(parser, 'fitLineStyle', '-b', @isstr);

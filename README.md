@@ -30,6 +30,30 @@ The result should be similar to the following figure:
 
 ![Log-Binned Histogram](/doc/synth_log_bin_hist.png?raw=true "Log-Binned Histogram")
 
+Instead of using the default parameters 'paramGuess' returned by the 'rsc_model' function we can estimate (fit) the parameters using real data. The function `load_reddit_data` loads sample data from Reddit users:
+
+```
+> Tcell = load_reddit_data();
+```
+
+The function `fit_model` is used to estimate the parameters. We are using the RSC default parameters as a starting point for the fit algorithm:
+```
+> paramEst = fit_model(Tcell, @rsc_model, 'paramGuess', paramGuess);
+```
+
+The function `plot_iat_hist_fit` compares the log-binned histogram for real data against synthetic time-stamps. If both histograms are similar then the RSC fit was successful:
+
+```
+> timeStampTotal = numel(cell2mat(Tcell));
+> Tsynth = fGen(paramEst, timeStampTotal);
+> plot_iat_hist_fit(Tcell, Tsynth);
+```
+
+The result should be similar to the following figure:
+
+![Log-Binned Histogram](/doc/synth_log_bin_hist_fit.png?raw=true "Log-Binned Histogram Fit")
+
+
 
 Datasets
 --------

@@ -16,6 +16,5 @@ synthCounts = synthCounts(bucketCenters > minFit);
 synthCounts = synthCounts ./ sum(synthCounts);
 
 objFuncVals = dataCounts - synthCounts;
-disp(params);
 
 end

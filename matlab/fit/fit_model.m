@@ -10,7 +10,7 @@ addParamValue(parser, 'tSize', 1e5, @isnumeric);
 addParamValue(parser, 'nBins', 100, @isnumeric);
 addParamValue(parser, 'paramGuess', [], @isnumeric);
 addParamValue(parser, 'diffMinChange', 1e-1, @isnumeric);
-addParamValue(parser, 'minFit', 1, @isnumeric);
+addParamValue(parser, 'minFit', 10, @isnumeric);
 addParamValue(parser, 'MaxFunEvals', 100, @isnumeric);
 addParamValue(parser, 'MaxIter', 100, @isnumeric);
  
