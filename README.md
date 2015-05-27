@@ -9,6 +9,28 @@ Matlab implementation of the RSC-Model which is described in the following paper
 
 > The 21st SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2015
 
+How to Use
+----------
+
+Using RSC to generate 10,000 synthetic time-stamps:
+
+```
+> addpath(genpath('.')); % Add sub-folders to Matlab path.
+> [ fGen, ~, paramGuess ] = rsc_model();
+> Tsynth = fGen(paramGuess, 1e5);
+```
+
+We can use the `plot_iat_hist` function to plot the log-binned histogram of the synthetic inter-arrival times (IAT):
+
+```
+> plot_iat_hist(Tsynth);
+```
+
+The result should be similar to the following figure:
+
+![Log-Binned Histogram](/doc/synth_log_bin_hist.png?raw=true "Log-Binned Histogram")
+
+
 Datasets
 --------
 
