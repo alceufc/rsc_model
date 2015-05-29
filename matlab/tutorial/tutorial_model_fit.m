@@ -9,7 +9,7 @@ plot_path  = fullfile(settings.doc_dir, figName);
 
 plot_iat_hist(Tsynth);
 
-save_as_png(plot_path, [5, 2]);
+save_as_png(plot_path, [5, 1.5]);
 
 Tcell = load_reddit_data();
 paramEst = fit_model(Tcell, @rsc_model, 'paramGuess', paramGuess);
@@ -23,4 +23,4 @@ plot_path  = fullfile(settings.doc_dir, figName);
 
 plot_iat_hist_fit(Tcell, Tsynth);
 
-save_as_png(plot_path, [5, 2]);
+save_as_png(plot_path, [5, 1.5]);

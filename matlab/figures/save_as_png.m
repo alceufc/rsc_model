@@ -9,6 +9,6 @@ warning('on', 'MATLAB:MKDIR:DirectoryExists');
 set(gcf, 'PaperPositionMode', 'manual');
 set(gcf, 'PaperUnits', 'inches');
 set(gcf, 'PaperPosition', [0 0 figSize(1) figSize(2)]);
-print(gcf, '-dpng', plot_path);
+print(gcf, '-dpng', plot_path, '-r120');
 
 end
