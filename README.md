@@ -99,13 +99,19 @@ Predicted Class
         .-------|---------|--------|
  Actual | Pos.  |      9  |     5  |
  Class  | Neg.  |      1  |   498  |
-        `--------------------------
+        `--------------------------
 ```
 
 Datasets
 --------
 
+This repository includes a sample dataset with time-stamps of 1,036 Reddit
+users in the `sample_data/reddit/` directory.
 
+We also include below links to download the complete datasets used in our paper.
+Each dataset has a README.md file with a more detailed description of the data.
+
+ - [Reddit Dataset](https://www.dropbox.com/l/3EAjnJw4EgMksUgZBUJemo) (20 Million time-stamps from 96,199 users);
 
 Acknowledgements
 ----------------
