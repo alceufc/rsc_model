@@ -1,4 +1,4 @@
-%[ Tcell, ~, ~, ~, ~, userType] = load_reddit_data();
+[ Tcell, ~, ~, ~, ~, userType] = load_reddit_data();
 
 % Split data into train and test subsets.
 CrossValIdxs = my_crossvalind('Kfold', userType, 2);

@@ -3,5 +3,6 @@
     "user_type" : {
         "reddit" : "../sample_data/reddit/user_type.csv"
     },
-    "fig_dir": "../figs/"
+    "fig_dir": "../figs/",
+    "doc_dir": "../doc/"
 }

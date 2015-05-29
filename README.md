@@ -45,7 +45,7 @@ The function `fit_model` is used to estimate the parameters. We are using the RS
 > paramEst = fit_model(Tcell, @rsc_model, 'paramGuess', paramGuess);
 ```
 
-The function `plot_iat_hist_fit` compares the log-binned histogram for real data against synthetic time-stamps. If both histograms are similar then the RSC fit was successful:
+The function `plot_iat_hist_fit` compares the log-binned histogram for real data against synthetic time-stamps. If both histograms are similar, then the RSC fit was successful:
 
 ```
 > timeStampTotal = numel(cell2mat(Tcell));
@@ -76,7 +76,7 @@ The sample dataset of Reddit users has some users that are bots. We can use the 
 > [Ltest, Ltrain] = estimate_bot_likelihood(TcellTest, TcellTrain, userTypeTrain);
 ```
 
-In order to classify users as bots or humans, we use a cost-sensitive approach in our paper. Assuming the costs `FpCost = 10` and `FnCost = 1` for false-positive (FP) and false-negative errors (FN), we can use the `likelihood_thresh` function:
+In order to classify users as bots or humans, we use a cost-sensitive approach in our paper. Assuming the costs `FpCost = 10` and `FnCost = 1` for false-positive (FP) and false-negative errors (FN), we can detect bot using the `likelihood_thresh` function as follows:
 
 ```
 > FpCost = 10; FnCost = 1;
@@ -92,6 +92,14 @@ We can also use the `print_conf_matrix` function to print the confusion matrix:
 > TN = sum(userTypeTrain == 0 & IsBot == 0);
 > FN = sum(userTypeTrain == 1 & IsBot == 0);
 > print_conf_matrix(TP, FP, TN, FN);
+
+Predicted Class  
+                .---------.--------.
+                |   Pos.  |   Neg. |
+        .-------|---------|--------|
+ Actual | Pos.  |      9  |     5  |
+ Class  | Neg.  |      1  |   498  |
+        `--------------------------
 ```
 
 Datasets
