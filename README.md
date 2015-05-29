@@ -12,6 +12,8 @@ Matlab implementation of the RSC-Model which is described in the following paper
 How to Use
 ----------
 
+### Generating Synthetic Time-stamps
+
 Using RSC to generate 10,000 synthetic time-stamps:
 
 ```
@@ -30,7 +32,9 @@ The result should be similar to the following figure:
 
 ![Log-Binned Histogram](/doc/synth_log_bin_hist.png?raw=true "Log-Binned Histogram")
 
-Instead of using the default parameters 'paramGuess' returned by the 'rsc_model' function we can estimate (fit) the parameters using real data. The function `load_reddit_data` loads sample data from Reddit users:
+### Fitting Data
+
+Instead of using the default parameters `paramGuess` returned by the 'rsc_model' function we can estimate (fit) the parameters using real data. The function `load_reddit_data` loads sample data from Reddit users:
 
 ```
 > Tcell = load_reddit_data();
@@ -53,7 +57,42 @@ The result should be similar to the following figure:
 
 ![Log-Binned Histogram](/doc/synth_log_bin_hist_fit.png?raw=true "Log-Binned Histogram Fit")
 
+### Detecting Bots
 
+The sample dataset of Reddit users has some users that are bots. We can use the `load_reddit_data` function to get a grouping variable that tells whether the i-th entry of Tcell is a bot or a human:
+
+```
+> [ Tcell, ~, ~, ~, ~, userType] = load_reddit_data();
+```
+
+`userType(idx) == 1` indicates that the time-stamp sequence in `Tcell{idx}` is from a bot. The function `estimate_bot_likelihood` returns a vector `L` where each entry `L(idx)` corresponds to the likelihood (i.e. the score) that the time-stamp sequence `Tcell(idx)` is from a bot:
+
+```
+% Split data into train and test subsets.
+> CrossValIdxs = my_crossvalind('Kfold', userType, 2);
+> TcellTest = Tcell(CrossValIdxs == 1);
+> TcellTrain = Tcell(CrossValIdxs == 2);
+> userTypeTrain = userType(CrossValIdxs == 2);
+> [Ltest, Ltrain] = estimate_bot_likelihood(TcellTest, TcellTrain, userTypeTrain);
+```
+
+In order to classify users as bots or humans, we use a cost-sensitive approach in our paper. Assuming the costs `FpCost = 10` and `FnCost = 1` for false-positive (FP) and false-negative errors (FN), we can use the `likelihood_thresh` function:
+
+```
+> FpCost = 10; FnCost = 1;
+> Lthresh = likelihood_thresh(Ltrain, userTypeTrain, FpCost, FnCost);
+> IsBot = LtrainL > Lthresh;
+```
+
+We can also use the `print_conf_matrix` function to print the confusion matrix:
+
+```
+> TP = sum(userTypeTrain == 1 & IsBot == 1);
+> FP = sum(userTypeTrain == 0 & IsBot == 1);
+> TN = sum(userTypeTrain == 0 & IsBot == 0);
+> FN = sum(userTypeTrain == 1 & IsBot == 0);
+> print_conf_matrix(TP, FP, TN, FN);
+```
 
 Datasets
 --------
