@@ -111,7 +111,8 @@ users in the `sample_data/reddit/` directory.
 We also include below links to download the complete datasets used in our paper.
 Each dataset has a README.md file with a more detailed description of the data.
 
- - [Reddit Dataset](https://www.dropbox.com/l/3EAjnJw4EgMksUgZBUJemo) (20 Million time-stamps from 96,199 users);
+ - [Reddit Dataset](https://www.dropbox.com/sh/lqk08yvr5cek8h9/AAD6RoP9xi_iCCUQvpgQIZc-a?dl=0) (20 Million time-stamps from 96,199 users);
+ - [Twitter Dataset]() (16 Million time-stamps from 6,790 users);
 
 Acknowledgements
 ----------------
